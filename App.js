@@ -1,11 +1,12 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button, TouchableWithoutFeedback } from 'react-native';
+
+import ChatScreen from './src/screens/home_screen/chat_screen/index';
+
 
 const App = () => {
   return (
-    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-      <Text>ChatVia</Text>
-    </View>
+    <ChatScreen />
   );
 }
 
