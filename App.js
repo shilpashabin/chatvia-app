@@ -1,16 +1,16 @@
-import React from 'react';
-import {View, Text} from 'react-native';
-import SwitchTile from './src/components/switch_tile';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button, TouchableWithoutFeedback } from 'react-native';
+
+import ChatScreen from './src/screens/home_screen/chat_screen/index';
+import ContactTile from './src/components/contact';
+
 
 const App = () => {
   return (
-    <View style={{flex: 1, marginTop: 20}}>
-      <SwitchTile
-        text="Last Seen"
-        subText="show the last time you were using ChatVia"
-      />
-      <SwitchTile text="Settings" />
+    <View>
+      <ChatScreen/>
     </View>
+    
   );
 };
 
