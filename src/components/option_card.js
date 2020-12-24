@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 
-const OptionCard = ({ data, containerStyle, textStyle, selectedItem }) => {
+const OptionCard = ({ data, containerStyle, textStyle, selectedItem = (item) => null }) => {
     return (
         <View style={[styles.itemContainer, containerStyle]}>
             { data.map((item, index) => (

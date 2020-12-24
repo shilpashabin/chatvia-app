@@ -7,42 +7,45 @@ import InputScrollView from 'react-native-input-scroll-view';
 import Ripple from 'react-native-material-ripple';
 import Modal from 'react-native-modal';
 
-
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+const StatusBarHeight = StatusBar.currentHeight;
+
 const options = ["People", "Options", "Create new group", "Add to Home screen", "Help & feedback"]
 
 
-const ChatScreen = () => {
+const ChatScreen = ({ route, navigation }) => {
 
     const [optionButtonState, setOptionButtonState] = useState(false);
     const [modalVisible, setModalVisible] = useState(false)
 
     return (
-        <>
-            <StatusBar backgroundColor={mainStyle.colors.primary} />
+        <View>
+            <StatusBar backgroundColor="rgba(0,0,0,0.2)" translucent={true} />
 
             <TouchableWithoutFeedback onPress={() => setOptionButtonState(false)} touchSoundDisabled={true}>
                 <View>
                     <View style={styles.upperContainer}>
                         {/* Header */}
                         <View style={styles.headerContainer}>
-                            <MaterialIcons name="arrow-back" size={25} color="#fff" />
+                            <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+                                <MaterialIcons style={styles.backButton} name="arrow-back" size={25} color="#fff" />
+                            </TouchableWithoutFeedback>
                             <View style={styles.innerContainer}>
                                 <View style={styles.nameContainer}>
-                                    <Text style={styles.headerHeading}>Alex</Text>
+                                    <Text style={styles.headerHeading}>{route.params.name}</Text>
                                     <Text style={styles.lastseenText}>Active yesterday</Text>
                                 </View>
                                 <Ripple onPress={() => setModalVisible(true)}>
                                     <MaterialIcons style={styles.videoCallButton} name="videocam" size={28} color="#fff" />
                                 </Ripple>
                             </View>
-                            <Ripple onPress={() => setOptionButtonState(true)}>
+                            <TouchableWithoutFeedback onPress={() => setOptionButtonState(true)}>
                                 <SimpleLineIcons style={styles.optionButton} name="options-vertical" size={16} color="#fff" />
-                            </Ripple>
+                            </TouchableWithoutFeedback>
                         </View>
 
                         {/* Mesaage Screen */}
@@ -111,7 +114,7 @@ const ChatScreen = () => {
                 </View>
             </Modal>
 
-        </>
+        </View>
     );
 }
 
@@ -122,12 +125,16 @@ const styles = StyleSheet.create({
     headerContainer: {
         flexDirection: 'row',
         width: '100%',
-        height: 55,
+        height: 55 + StatusBarHeight,
         backgroundColor: mainStyle.colors.primary,
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingBottom: 5,
-        paddingLeft: 15
+        paddingTop: StatusBarHeight
+    },
+    backButton: {
+        lineHeight: 55,
+        paddingHorizontal: 15
     },
     headerHeading: {
         fontSize: 20,
@@ -150,20 +157,19 @@ const styles = StyleSheet.create({
     },
     optionCardContainer: {
         position: 'absolute',
-        top: 5,
+        top: StatusBarHeight + 3,
         right: 0,
-    },
-    nameContainer: {
-        marginLeft: 20
     },
     innerContainer: {
         flexDirection: 'row',
         marginHorizontal: 2,
         justifyContent: 'space-between',
         alignSelf: 'center',
-        marginHorizontal: 10,
         width: '70%',
         alignItems: 'center'
+    },
+    nameContainer: {
+        paddingLeft: 10
     },
     chatScreenContainer: {
         marginBottom: 100
