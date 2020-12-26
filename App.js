@@ -8,7 +8,7 @@ import DiscoverabilityScreen from './src/screens/home_screen/discoverability_set
 
 const App = () => {
   return (
-    <DiscoverabilityScreen />
+    <MainNavigation />
   );
 }
 

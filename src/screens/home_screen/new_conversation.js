@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Pressable, } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Pressable, FlatList } from 'react-native';
 
 import { Divider } from 'react-native-elements';
 import Modal from 'react-native-modal';
@@ -8,6 +8,13 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import OptionCard from '../../components/option_card';
+import ContactTile from '../../components/contact';
+import UserData from './data';
+
+const USERS = new UserData();
+const Frequent_Users = USERS.FrequentUsers;
+const ChatVia_Users = USERS.ChatViaUser;
+const UnRegistered_Users = USERS.UnRegisteredUsers;
 
 const NewConversation = ({ navigation }) => {
     const [optionButtonState, setOptionButtonState] = useState(false);
@@ -29,24 +36,65 @@ const NewConversation = ({ navigation }) => {
         });
     }, [navigation]);
 
-    return (
-        <View style={styles.mainContainer}>
-            {/* Search Box */}
-            <View style={styles.searchBox}>
-                <MaterialIcons name="search" size={30} color="rgba(0,0,0,0.5)" />
-                <TextInput
-                    style={styles.searchBoxInput}
-                    placeholder="Name, email, or phone"
-                />
-            </View>
-            <Divider />
+    const renderItem = ({ item }) => (
+        <ContactTile
+            data={item.image}
+            name={item.name}
+            subname={item.message}
+            rightname={item.lastseen}
+            onPress={() => navigation.navigate('Chat Screen', { name: item.name, lastseen: item.lastseen })}
+        />
+    );
 
-            {/* New Group */}
-            <View style={styles.newGroupContainer}>
-                <View style={styles.IconContainer}>
-                    <MaterialIcons name="group-add" size={30} color="#fff" />
+
+    return (
+        <>
+            <View style={styles.mainContainer}>
+                {/* Search Box */}
+                <View style={styles.searchBox}>
+                    <MaterialIcons name="search" size={30} color="rgba(0,0,0,0.5)" />
+                    <TextInput
+                        style={styles.searchBoxInput}
+                        placeholder="Name, email, or phone"
+                    />
                 </View>
-                <Text style={styles.groupText}>New group</Text>
+                <Divider />
+
+                {/* New Group */}
+                <View style={styles.newGroupContainer}>
+                    <View style={styles.IconContainer}>
+                        <MaterialIcons name="group-add" size={30} color="#fff" />
+                    </View>
+                    <Text style={styles.groupText}>New group</Text>
+                </View>
+
+                <View style={{ flex: 1 }}>
+                    <FlatList
+                        data={Frequent_Users}
+                        keyExtractor={(item) => item.id.toString()}
+                        ListHeaderComponent={<Text style={styles.subHeading}>Frequent</Text>}
+                        renderItem={renderItem}
+                        ListFooterComponent={
+                            <FlatList
+                                data={ChatVia_Users}
+                                keyExtractor={(item) => item.id.toString()}
+                                ListHeaderComponent={<Text style={styles.subHeading}>On ChatVia</Text>}
+                                renderItem={renderItem}
+                                ListFooterComponent={
+                                    <FlatList
+                                        data={UnRegistered_Users}
+                                        keyExtractor={(item) => item.id.toString()}
+                                        ListHeaderComponent={<Text style={styles.subHeading}>Not On ChatVia</Text>}
+                                        renderItem={renderItem}
+                                    />
+                                }
+                            />
+                        }
+                    />
+
+                </View>
+
+
             </View>
 
             <Modal
@@ -63,12 +111,13 @@ const NewConversation = ({ navigation }) => {
                     <OptionCard data={['Help & feedback']} />
                 </View>
             </Modal>
-        </View>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
     mainContainer: {
+        flex: 1,
         backgroundColor: '#FEFEFE',
     },
     optionButtonPressable: {
@@ -118,11 +167,19 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         marginLeft: 15
     },
+    subHeading: {
+        color: 'rgba(0,0,0,0.6)',
+        fontSize: 16,
+        marginTop: 20,
+        marginBottom: 10,
+        paddingHorizontal: 15
+    },
     optionCardStyle: {
         position: 'absolute',
         top: 3,
         right: 2
     },
+
 })
 
 export default NewConversation;

@@ -1,17 +1,34 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, StatusBar, TouchableOpacity, Button } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import mainStyle from '../../config/styles';
 import Ripple from 'react-native-material-ripple';
+import ContactTile from '../../components/contact';
+import UserData from './data';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const StatusBarHeight = StatusBar.currentHeight;
 
+const USERS = new UserData();
+const Frequent_Users = USERS.FrequentUsers;
+
 const HomeScreen = () => {
 
     const navigation = useNavigation();
+
+    const renderItem = ({ item }) => (
+        <ContactTile
+            data={item.image}
+            name={item.name}
+            subname={item.message}
+            rightname={item.lastseen}
+            onPress={() => navigation.navigate('Chat Screen', { name: item.name, lastseen: item.lastseen })}
+        />
+    );
+
+
     return (
         <View>
 
@@ -26,13 +43,13 @@ const HomeScreen = () => {
                 </View>
 
                 {/* Content */}
-                <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-                    {/* <View style={{ width: 100, height: 500, backgroundColor: 'grey', }}></View>
-                    <View style={{ width: 100, height: 500, backgroundColor: 'red', }}></View> */}
-                    <Ripple onPress={() => navigation.navigate('Chat Screen', { name: 'Contact 1' })} style={{ marginHorizontal: 20, marginVertical: 5, backgroundColor: 'rgba(0,0,0,0.5)', alignItems: 'center', paddingVertical: 20 }}><Text>Contact 1</Text></Ripple>
-                    <Ripple onPress={() => navigation.navigate('Chat Screen', { name: 'Contact 2' })} style={{ marginHorizontal: 20, marginVertical: 5, backgroundColor: 'rgba(0,0,0,0.5)', alignItems: 'center', paddingVertical: 20 }}><Text>Contact 2</Text></Ripple>
-                    <Ripple onPress={() => navigation.navigate('Chat Screen', { name: 'Contact 3' })} style={{ marginHorizontal: 20, marginVertical: 5, backgroundColor: 'rgba(0,0,0,0.5)', alignItems: 'center', paddingVertical: 20 }}><Text>Contact 3</Text></Ripple>
-                </ScrollView>
+
+                <FlatList
+                    data={Frequent_Users}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={renderItem}
+                    showsVerticalScrollIndicator={false}
+                />
             </View>
 
             {/* NewButton */}
@@ -62,8 +79,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginLeft: 10
-    },
-    scrollViewContainer: {
     },
     newIconContainer: {
         position: 'absolute',

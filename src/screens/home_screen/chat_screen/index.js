@@ -37,7 +37,7 @@ const ChatScreen = ({ route, navigation }) => {
                             <View style={styles.innerContainer}>
                                 <View style={styles.nameContainer}>
                                     <Text style={styles.headerHeading}>{route.params.name}</Text>
-                                    <Text style={styles.lastseenText}>Active yesterday</Text>
+                                    <Text style={styles.lastseenText}>Active {route.params.lastseen}</Text>
                                 </View>
                                 <Ripple onPress={() => setModalVisible(true)}>
                                     <MaterialIcons style={styles.videoCallButton} name="videocam" size={28} color="#fff" />
