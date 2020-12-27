@@ -3,9 +3,9 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import mainStyle from '../config/styles';
 
-const TextTile = ({headText, subText}) => {
+const TextTile = ({headText, subText, onpress}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onpress}>
       <View style={style.section}>
         <Text style={style.headText}>{headText}</Text>
         <Text style={style.subText}>{subText}</Text>
@@ -18,12 +18,9 @@ export default TextTile;
 
 const style = StyleSheet.create({
   headText: {
-    color: 'black',
-    fontSize: 20,
-    fontWeight: 'bold',
+    color: '#464647',
+    fontSize: 18,
     paddingLeft: 10,
-    
-
   },
   subText: {
     fontSize: 15,
@@ -35,7 +32,7 @@ const style = StyleSheet.create({
     height: 60,
     backgroundColor: 'white',
     paddingLeft: 5,
-    paddingVertical:5,
-    marginTop:5
+    marginTop:5,
+    paddingBottom:10
   },
 });

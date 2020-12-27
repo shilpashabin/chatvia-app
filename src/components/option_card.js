@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     itemContainer: {
         width: 200,
         backgroundColor: '#fff',
-        elevation: 10
+        elevation: 10,
+        borderRadius:3
     },
     itemStyle: {
         color: '#000',
