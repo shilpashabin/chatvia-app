@@ -107,15 +107,15 @@ const styles = StyleSheet.create({
         },
         inviteimg:{
             width:300,
-            height:300,
+            height:200,
             alignSelf:'center',
-            margin:50,
+             margin:50,
+            justifyContent:'center',
+            
         
         },
        imgcontainer:{
-        flex: 1,
-        justifyContent: "center",
-        // paddingHorizontal: 10
+        
        } ,
        imgtext:{
            alignSelf:'center',

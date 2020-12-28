@@ -1,51 +1,46 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,TouchableWithoutFeedback
-} from "react-native";
-
+import {StyleSheet,Text,TouchableOpacity,View,TouchableWithoutFeedback} from "react-native";
+import mainStyle from '../../config/styles';
+import Modal from 'react-native-modal';
 import Ripple from 'react-native-material-ripple';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import OptionCard from '../../components/option_card';
-
 import SwitchTile from '../../components/switch_tile';
-import Divider from '../../components/divider';
-import TextTile from '../../components/text_tile';
+import DividerTile from '../../components/divider';
+import { ScrollView } from "react-native-gesture-handler";
 
 
-const Options = () => {
+
+    const Options = () => {
     const [optionButtonState, setOptionButtonState] = useState(false);
     const options = [ "Help & feedback",]
-  const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
   return (
     <View>
+      <ScrollView>
       <Modal
-        animationType="none"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
-      >
+      isVisible={modalVisible}
+                backdropOpacity={0.3}
+                style={{margin:10}}
+                animationIn={'fadeIn'}
+                animationOut={'fadeOutDown'}
+                onBackdropPress={()=> setModalVisible(false)}>
+      
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Delete Conversation</Text>
-            <View style={{marginTop:10}}><Text style={{fontSize:16,textAlign:'justify'}}>
+            <View style={{marginTop:10}}><Text style={{fontSize:16,textAlign:'justify',}}>
                you will permanently lose your copy of this conversation's history.Others participants will 
                still be able to view the conversation,including photos you sent.You can delete photos you
                sent by going to <Text style={{color:'green',textDecorationLine:'underline'}}>Google Album Archive Learn more.</Text>
                </Text></View>
-               <View style={{flexDirection:'row',paddingTop:20,}}>
-                <Text onPress={() => {
-                setModalVisible(!modalVisible);
-              }} style={{color:'green'}}>CANCEL</Text>
-                <Text style={{paddingLeft:40,color:'green'}}>DELETE</Text>
-            </View>
+               <View style={styles.cancelView}>
+                            <TouchableWithoutFeedback onPress={()=> setModalVisible(false)}>
+                            <Text style={{color:mainStyle.colors.primary}}>CANCEL</Text>
+                            </TouchableWithoutFeedback>
+                            <Text style={{color:mainStyle.colors.primary}}>BLOCK</Text>
+                        </View>
           </View>
         </View>
       </Modal>
@@ -82,10 +77,10 @@ const Options = () => {
 
             <Text style={styles.optionText}>Conversation</Text>
             <SwitchTile text="History"></SwitchTile>
-            <Divider></Divider>
+            <DividerTile/>
             <Text style={styles.optionText}>Notification Options</Text>
             <SwitchTile text="Notifications"></SwitchTile>
-            <Divider></Divider>
+            <DividerTile/>
             <Text style={styles.optionText}>Other actions</Text>
             {/* <TextTile headText="Archive conversation" ></TextTile> */}
 
@@ -109,7 +104,7 @@ const Options = () => {
 
 
 
-
+      </ScrollView>
       
     </View>
   );
@@ -125,17 +120,10 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 20,
     backgroundColor: "white",
-    borderRadius: 20,
+    borderRadius: 10,
     padding: 35,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
+    
   },
   openButton1: {
     // backgroundColor: "#F194FF",
@@ -198,6 +186,15 @@ const styles = StyleSheet.create({
         top: 5,
         right: 0,
     },
+    cancelView:
+    {
+        flexDirection:'row', 
+        alignSelf:'flex-end',
+        justifyContent:'space-around', 
+        width:'50%',
+        paddingVertical:20,
+        
+  }
 });
 
 export default Options;
