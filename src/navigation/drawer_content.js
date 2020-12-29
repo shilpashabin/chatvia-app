@@ -7,7 +7,7 @@ import mainStyle from '../config/styles';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const DrawerContent = (props) => {
+const DrawerContent = ({ navigation, ...props }) => {
     const [angle, SetRotationangle] = useState('0deg');
 
     const DrawerView = () => {
@@ -84,7 +84,7 @@ const DrawerContent = (props) => {
                                     color={color} />
                             )}
                             label="Settings"
-                            onPress={() => null}
+                            onPress={() => navigation.navigate('SettingsStack')}
                         />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
                             icon={({ color, size }) => (

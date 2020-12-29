@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import HomeScreenStack from './home_screen_stack_navigation';
+import SettingsScreenStack from './settings_stack_navigation';
 
 import DrawerContent from './drawer_content';
 
@@ -20,6 +21,7 @@ export default function MainNavigation() {
                 drawerContent={props => <DrawerContent {...props} />}
             >
                 <Drawer.Screen name="HomeStack" component={HomeScreenStack} />
+                <Drawer.Screen name="SettingsStack" component={SettingsScreenStack} />
             </Drawer.Navigator>
         </NavigationContainer >
     );
