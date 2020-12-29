@@ -101,7 +101,7 @@ const Archived = () => {
 
 const styles = StyleSheet.create({
     upperContainer: {
-        height: '100%'
+        // height: '100%'
     },
     headerContainer: {
         flexDirection: 'row',
