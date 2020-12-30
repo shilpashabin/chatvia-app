@@ -19,22 +19,22 @@ const UnRegistered_Users = USERS.UnRegisteredUsers;
 const NewConversation = ({ navigation }) => {
     const [optionButtonState, setOptionButtonState] = useState(false);
 
-    React.useLayoutEffect(() => {
-        navigation.setOptions({
-            headerRight: () => (
-                <View style={styles.optionButtonPressable}>
-                    <Pressable
-                        android_ripple={{ color: 'rgba(255,255,255,0.1)' }}
-                        onPress={() => setOptionButtonState(true)}
-                    >
-                        <View style={styles.optionButtonContainer}>
-                            <SimpleLineIcons style={styles.optionButton} name="options-vertical" size={16} color="#fff" />
-                        </View>
-                    </Pressable>
-                </View>
-            ),
-        });
-    }, [navigation]);
+    // React.useLayoutEffect(() => {
+    //     navigation.setOptions({
+    //         headerRight: () => (
+    //             <View style={styles.optionButtonPressable}>
+    //                 <Pressable
+    //                     android_ripple={{ color: 'rgba(255,255,255,0.1)' }}
+    //                     onPress={() => setOptionButtonState(true)}
+    //                 >
+    //                     <View style={styles.optionButtonContainer}>
+    //                         <SimpleLineIcons style={styles.optionButton} name="options-vertical" size={16} color="#fff" />
+    //                     </View>
+    //                 </Pressable>
+    //             </View>
+    //         ),
+    //     });
+    // }, [navigation]);
 
     const renderItem = ({ item }) => (
         <ContactTile
