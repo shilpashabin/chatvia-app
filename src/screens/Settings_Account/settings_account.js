@@ -18,8 +18,8 @@ const SettingsAccount = ({navigation}) =>{
                         <MaterialIcons name="arrow-back" size={25} color="#fff" />
                         </TouchableOpacity>
                         <View style={style.titleBox}>
-                            <Text style={style.headerText}>John</Text>
-                            <Text style={style.subtext}>john453@gmail.com</Text>
+                            <Text style={style.headerText}>Alex Mathew</Text>
+                            <Text style={style.subtext}>alexmathew23@gmail.com</Text>
                         </View>
                     </View>
             <ScrollView showsVerticalScrollIndicator={false}>

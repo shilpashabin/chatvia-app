@@ -91,7 +91,9 @@ const Archived = ({navigation}) => {
                 backdropOpacity={0.3}
                 onBackdropPress={() => setModalVisible(false)}
             >
-               
+               <View>
+                   
+               </View>
             </Modal>
 
         </>
@@ -133,8 +135,8 @@ const styles = StyleSheet.create({
      },
     optionCardContainer: {
         position: 'absolute',
-        top: 5,
-        right: 0,
+        top: 25,
+        right: 5,
     },
     nameContainer: {
         marginLeft: 20

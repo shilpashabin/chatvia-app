@@ -32,7 +32,7 @@ const Settings = ({navigation}) => {
             <SectionHead heading='General Settings' /> 
             <SwitchTile text='Browse in ChatVia' subText='Let the ChatVia browses open web links' />
               <SectionHead heading='Account' /> 
-              <TextTile  headText='John' subText='john453@gmail.com' onpress={()=> navigation.navigate("SettingsAccount")}/>
+              <TextTile  headText='Alex Mathew' subText='alexmathew23@gmail.com' onpress={()=> navigation.navigate("SettingsAccount")}/>
               <DividerTile/>
               <TextTile  headText='Add account' onpress={()=> setModalVisible(true)}/>
             <DividerTile/>
@@ -54,7 +54,7 @@ const Settings = ({navigation}) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Choose Account</Text>
          
-                       <ContactTile name="SHILPA SHILPA" subname="websoullabs@gmail.com" ></ContactTile>
+                       <ContactTile name="Alex Mathew" subname="alexmathew23@gmail.com" ></ContactTile>
                 
 
                <View style={{flexDirection:'row',padding:20,}}>

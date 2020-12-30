@@ -80,7 +80,7 @@ const style = StyleSheet.create({
     },
     footer:{
         width:'100%',
-        height:60,
+        height:55,
         flexDirection:'row',
         position:'absolute',
         bottom:0

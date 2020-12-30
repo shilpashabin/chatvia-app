@@ -5,11 +5,13 @@ import { Divider } from 'react-native-elements';
 import Modal from 'react-native-modal';
 
 import mainStyle from '../config/styles';
+import ContactTile from '../components/contact';
 import SnoozeData from '../screens/Snooze_Notification/snooze_data';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const DrawerContent = ({ navigation, ...props }) => {
+    const [modalVisible, setModalVisible] = useState(false);
     const [snoozeModalVisible, setSnoozeModalVisible] = useState(false);
     const [angle, SetRotationangle] = useState('0deg');
 
@@ -141,7 +143,7 @@ const DrawerContent = ({ navigation, ...props }) => {
                                     color={color} />
                             )}
                             label="Add account"
-                            onPress={() => null}
+                            onPress={() => setModalVisible(true)}
                         />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
                             icon={({ color, size }) => (
@@ -170,6 +172,37 @@ const DrawerContent = ({ navigation, ...props }) => {
                         </View>
                 </Modal>
             </View>
+
+
+             {/* ADD ACCOUNT MODAL */}
+
+    <View>
+          <Modal
+                isVisible={modalVisible}
+                backdropOpacity={0.3}
+                style={{margin:10}}
+                animationIn={'fadeIn'}
+                animationOut={'fadeOut'}
+                onBackdropPress={()=> setModalVisible(false)}>
+      
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Text style={styles.modalText}>Choose Account</Text>
+         
+                            <ContactTile name="Alex Mathew" subname="alexmathew23@gmail.com" ></ContactTile>
+                
+
+                            <View style={{flexDirection:'row',padding:20,}}>
+                                <Text style={{fontSize:16,color:'grey'}} onPress={() => {
+                                        setModalVisible(!modalVisible);
+                                    }} >Add account</Text>
+              
+                            </View>
+                        </View>
+                    </View>
+            </Modal>
+    </View>
+
 
             </DrawerContentScrollView>
         </View>
@@ -231,6 +264,28 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: 'white',
       },
+
+      // ACcount Modal
+
+centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding:20
+  },
+  modalView: {
+    margin: 10,
+    backgroundColor: "white",
+     borderRadius: 6,
+    padding: 10,
+    alignItems: "center",
+   },
+  modalText: {
+    alignSelf:'flex-start',
+    padding:10,
+    fontWeight:'bold',
+    fontSize:18
+  },
 })
 
 export default DrawerContent;

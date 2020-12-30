@@ -1,8 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import Modal from 'react-native-modal';
+
 import mainStyle from '../../config/styles';
+
 import Ripple from 'react-native-material-ripple';
 import ContactTile from '../../components/contact';
 import UserData from './data';
@@ -15,7 +18,7 @@ const USERS = new UserData();
 const Frequent_Users = USERS.FrequentUsers;
 
 const HomeScreen = () => {
-
+    const [modalVisible, setModalVisible] = useState(true);
     const navigation = useNavigation();
 
     const renderItem = ({ item }) => (
@@ -57,6 +60,36 @@ const HomeScreen = () => {
                 <MaterialIcons name="add" size={25} color="#fff" />
             </TouchableOpacity>
 
+
+             {/* ADD ACCOUNT MODAL */}
+
+    <View>
+          <Modal
+                isVisible={modalVisible}
+                backdropOpacity={0.3}
+                style={{margin:10}}
+                animationIn={'fadeIn'}
+                animationOut={'fadeOut'}
+                >
+      
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Text style={styles.modalText}>Choose Account</Text>
+         
+                            <ContactTile name="Alex Mathew" subname="alexmathew23@gmail.com" ></ContactTile>
+                
+
+                            <View style={{flexDirection:'row',padding:20,}}>
+                                <Text style={{fontSize:16,color:'grey'}} onPress={() => {
+                                        setModalVisible(false);
+                                    }} >Add account</Text>
+              
+                            </View>
+                        </View>
+                    </View>
+            </Modal>
+    </View>
+
         </View >
     );
 }
@@ -92,6 +125,27 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+     // ACcount Modal
+
+centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding:20
+  },
+  modalView: {
+    margin: 10,
+    backgroundColor: "white",
+     borderRadius: 6,
+    padding: 10,
+    alignItems: "center",
+   },
+  modalText: {
+    alignSelf:'flex-start',
+    padding:10,
+    fontWeight:'bold',
+    fontSize:18
+  },
 })
 
 export default HomeScreen;

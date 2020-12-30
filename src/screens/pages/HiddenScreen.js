@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   optionModal: {
     position: 'absolute',
     top: 0,
-    right: 0,
+    right: 5,
   },
       viewImage:{
         marginVertical:70,

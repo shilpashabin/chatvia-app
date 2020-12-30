@@ -18,7 +18,7 @@ const BlockedScreen = ({navigation}) => {
           <MaterialIcons name="arrow-back" size={23} color="#fff" />
           </TouchableOpacity>
           <View style={styles.titleBox}>
-              <Text style={styles.headerText}>Hidden contacts</Text>
+              <Text style={styles.headerText}>Blocked contacts</Text>
               <TouchableOpacity onPress={() => setOptionModal(true)}>
                   <SimpleLineIcons name="options-vertical" size={16} color="#fff" />
               </TouchableOpacity>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   optionModal: {
     position: 'absolute',
     top: 0,
-    right: 0,
+    right: 5,
   },
       viewImage:{
         marginVertical:70,
