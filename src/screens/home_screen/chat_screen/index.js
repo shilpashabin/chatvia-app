@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView, TextInput, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView, TextInput, TouchableWithoutFeedback, Pressable } from 'react-native';
 
 import mainStyle from '../../../config/styles';
 import OptionCard from '../../../components/option_card';
@@ -64,11 +64,11 @@ const ChatScreen = ({ route, navigation }) => {
                             </InputScrollView>
                         </View>
                         <View style={styles.chatOptionsContainer}>
-                            <Fontisto name="smiley" size={21} color="rgba(0,0,0,0.5)" />
-                            <MaterialIcons name="image" size={25} color="rgba(0,0,0,0.5)" />
-                            <MaterialIcons name="photo-camera" size={25} color="rgba(0,0,0,0.5)" />
-                            <MaterialIcons name="videocam" size={25} color="rgba(0,0,0,0.5)" />
-                            <MaterialCommunityIcons name="sticker-emoji" size={25} color="rgba(0,0,0,0.5)" />
+                            <Pressable style={styles.bottomIcon} android_ripple={{ color: 'rgba(0,0,0,0.3)' }}><Fontisto name="smiley" size={21} color="rgba(0,0,0,0.5)" /></Pressable>
+                            <Pressable style={styles.bottomIcon} android_ripple={{ color: 'rgba(0,0,0,0.3)' }}><MaterialIcons name="image" size={25} color="rgba(0,0,0,0.5)" /></Pressable>
+                            <Pressable style={styles.bottomIcon} android_ripple={{ color: 'rgba(0,0,0,0.3)' }}><MaterialIcons name="photo-camera" size={25} color="rgba(0,0,0,0.5)" /></Pressable>
+                            <Pressable style={styles.bottomIcon} android_ripple={{ color: 'rgba(0,0,0,0.3)' }}><MaterialIcons name="videocam" size={25} color="rgba(0,0,0,0.5)" /></Pressable>
+                            <Pressable style={styles.bottomIcon} android_ripple={{ color: 'rgba(0,0,0,0.3)' }}><MaterialCommunityIcons name="sticker-emoji" size={25} color="rgba(0,0,0,0.5)" /></Pressable>
                         </View>
                         <View style={styles.sendButtonContainers}>
                             <MaterialIcons name="send" size={20} color="rgba(0,0,0,0.5)" />
@@ -82,8 +82,20 @@ const ChatScreen = ({ route, navigation }) => {
                 {optionButtonState ? <View>
                     <OptionCard
                         data={options}
-                        selectedItem={(item) => console.log(item)} />
-                </View> : <View></View>}
+                        selectedItem={(item) => {
+                            console.log(item)
+                            switch (item) {
+                                case 'People':
+                                    navigation.navigate('PeopleScreen');
+                                    setOptionButtonState(false);
+                                    break;
+                                case 'Options':
+                                    navigation.navigate('OptionScreen');
+                                    setOptionButtonState(false);
+                                    break;
+                            }
+                        }} />
+                </View> : null}
             </View>
 
             {/* VideoCall Modal */}
@@ -193,12 +205,14 @@ const styles = StyleSheet.create({
     },
     chatOptionsContainer: {
         flexDirection: 'row',
-        height: 50,
         width: '70%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: 15,
         elevation: 10
+    },
+    bottomIcon: {
+        paddingHorizontal: 10,
+        paddingVertical: 10
     },
     sendButtonContainers: {
         position: 'absolute',
