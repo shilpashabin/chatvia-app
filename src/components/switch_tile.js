@@ -20,9 +20,9 @@ const SwitchTile = ({text, subText}) =>{
                   <Text style={style.text}>{text}</Text>
                   <Text style={style.subText}>{subText}</Text>
               </View>
-              <View>
+              <View style={{height:40}}>
                   <Switch
-                      trackColor={{false: '#bdbdbd', true: '#c0dece'}}
+                      trackColor={{false: '#bdbdbd', true: '#e8eae6'}}
                       thumbColor={isEnabled ? mainStyle.colors.primary : '#ececec'}
                       onValueChange={toggleSwitch}
                       value={isEnabled}
@@ -47,7 +47,7 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 60,
+    height: 50,
     backgroundColor: 'white',
     paddingLeft: 5,
     paddingBottom:10

@@ -17,7 +17,7 @@ import {StyleSheet, Text,View,} from "react-native";
       return(
         <View>
           <Modal
-         isVisible={true}
+                isVisible={true}
                 backdropOpacity={0.3}
                 style={{margin:10}}
                 animationIn={'fadeIn'}

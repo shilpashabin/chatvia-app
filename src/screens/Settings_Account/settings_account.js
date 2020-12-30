@@ -1,43 +1,49 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity , StatusBar} from 'react-native';
 import SwitchTile from '../../components/switch_tile';
 import DividerTile from '../../components/divider';
 import TextTile from '../../components/text_tile';
 import SectionHead from '../../components/section_heading';
 import mainStyle from '../../config/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+const StatusBarHeight = StatusBar.currentHeight;
 
-const SettingsAccount = () =>{
+
+const SettingsAccount = ({navigation}) =>{
     return (
         <View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{width:'100%', backgroundColor:'#fff', }}>
-                    <View style={style.header}>
+            <StatusBar backgroundColor="rgba(0,0,0,0.2)" translucent={true} />
+            <View style={style.header}>
+                        <TouchableOpacity onPress={()=> navigation.goBack(null)}>
                         <MaterialIcons name="arrow-back" size={25} color="#fff" />
+                        </TouchableOpacity>
                         <View style={style.titleBox}>
-                            <Text style={style.headerText}>AISWARYA P V</Text>
-                            <Text style={style.subtext}>aiswaryapv3123@gmail.com</Text>
+                            <Text style={style.headerText}>John</Text>
+                            <Text style={style.subtext}>john453@gmail.com</Text>
                         </View>
                     </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={{width:'100%', backgroundColor:'#fff', marginBottom:75 }}>
+                    
                     <View>
                         <SectionHead heading ="General settings"/>
                         <TextTile headText="Manage your Google Account"/>
                         <DividerTile/>
-                        <TextTile headText="Share your status" subText="Your status will not be visible"/>
+                        <TextTile headText="Share your status" subText="Your status will not be visible" onpress={()=> navigation.navigate("Sharestatus")}/>
                         <SectionHead heading ="Notifications" />
-                        <TextTile headText="Messages" subText="Vibrate and play sound"/>
+                        <TextTile headText="Messages" subText="Vibrate and play sound" onpress={()=>navigation.navigate("MessageScreen")}/>
                         <DividerTile/>
-                        <TextTile headText="Incoming calls" subText="Vibrate and play sound" />
+                        <TextTile headText="Incoming calls" subText="Vibrate and play sound" onpress={()=> navigation.navigate("IncomingCallscreen")}/>
                         <View style={style.seperate}></View>
                         <SectionHead heading="How others can get in touch with you" />
-                        <TextTile headText="Customise invites" />
+                        <TextTile headText="Customise invites" onpress={()=> navigation.navigate("Customize")}/>
                         <View style={{height:5, width:'100%'}}></View>
                         <SectionHead heading="Account" />
-                        <TextTile headText="Discoverability settings" />
+                        <TextTile headText="Discoverability settings" onpress={()=> navigation.navigate("DiscoverabilityScreen")}/>
                         <DividerTile/>
-                        <TextTile headText="Hidden contacts" />
+                        <TextTile headText="Hidden contacts" onpress={()=> navigation.navigate("HiddenScreen")}/>
                         <DividerTile/>
-                        <TextTile headText="Blocked contacts" />
+                        <TextTile headText="Blocked contacts" onpress={()=> navigation.navigate("BlockedScreen")}/>
                         <DividerTile/>
                         <TextTile headText="Sign out" />
                         <SectionHead heading="Improve ChatVia" />
@@ -54,10 +60,12 @@ export default SettingsAccount;
 const style = StyleSheet.create({
     header: {
         backgroundColor: mainStyle.colors.primary,
-        height: 50,
+        height: 55 + StatusBarHeight,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 10,
+        paddingTop: StatusBarHeight,
+        paddingHorizontal:10,
+        elevation:5
       },
       titleBox: {
         width: '90%',

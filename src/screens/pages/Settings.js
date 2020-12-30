@@ -1,19 +1,28 @@
-import React, { Component } from 'react';
-import { Text,View,SafeAreaView,StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import { Text,View,SafeAreaView,StyleSheet, StatusBar,TouchableOpacity} from 'react-native';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Modal from 'react-native-modal';
 import SectionHead from '../../components/section_heading';
 import SwitchTile from '../../components/switch_tile';
 import TextTile from '../../components/text_tile';
-import DividerTile from '../../components/divider'
+import DividerTile from '../../components/divider';
+import ContactTile from '../../components/contact';
+import mainStyle from '../../config/styles';
+const StatusBarHeight = StatusBar.currentHeight;
 
-const Settings = () => {
-  
+const Settings = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={{backgroundColor:'white'}}>
+    <View>
+       <StatusBar backgroundColor="rgba(0,0,0,0.2)" translucent={true} />
+    <View style={{backgroundColor:'white', height:'100%', width:'100%'}}>
+      
         <View style={styles.upperContainer}>
             <View style={styles.headerContainer}>
-              <MaterialIcons name="arrow-back" size={25} color="#fff"/>
+            <TouchableOpacity onPress={()=> navigation.goBack(null)}>
+            <MaterialIcons name="arrow-back" size={25} color="#fff" />
+            </TouchableOpacity>
             <View style={styles.innerContainer}>
         <View style={styles.nameContainer}>
               <Text style={styles.headerHeading} >Settings</Text>
@@ -23,13 +32,44 @@ const Settings = () => {
             <SectionHead heading='General Settings' /> 
             <SwitchTile text='Browse in ChatVia' subText='Let the ChatVia browses open web links' />
               <SectionHead heading='Account' /> 
-              <TextTile  headText='sm' subText='sm@gmail.com'/>
+              <TextTile  headText='John' subText='john453@gmail.com' onpress={()=> navigation.navigate("SettingsAccount")}/>
               <DividerTile/>
-              <TextTile  headText='Add account'/>
+              <TextTile  headText='Add account' onpress={()=> setModalVisible(true)}/>
             <DividerTile/>
 
       </View>
-       
+
+      {/* ADD ACCOUNT MODAL */}
+
+      <View>
+          <Modal
+                isVisible={modalVisible}
+                backdropOpacity={0.3}
+                style={{margin:10}}
+                animationIn={'fadeIn'}
+                animationOut={'fadeOut'}
+                onBackdropPress={()=> setModalVisible(false)}>
+      
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Choose Account</Text>
+         
+                       <ContactTile name="SHILPA SHILPA" subname="websoullabs@gmail.com" ></ContactTile>
+                
+
+               <View style={{flexDirection:'row',padding:20,}}>
+                <Text style={{fontSize:16,color:'grey'}} onPress={() => {
+                setModalVisible(!modalVisible);
+              }} >Add account</Text>
+              
+            </View>
+          </View>
+        </View>
+      </Modal>
+        </View>
+
+
+    </View>
     </View>
 
   )
@@ -41,20 +81,17 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     width: '100%',
-    height: 55,
-    backgroundColor:'green',
+    height: 55 + StatusBarHeight,
+    backgroundColor:mainStyle.colors.primary,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingBottom: 5,
-    paddingLeft: 15
+    paddingTop: StatusBarHeight,
+    paddingLeft: 15,
+    
 },
 headerHeading: {
     fontSize: 20,
     color: '#fff',
-    fontWeight: 'bold',
-  
-  
-    
+    fontWeight: 'bold',  
 },
 nameContainer: {
   marginLeft: 16,
@@ -75,5 +112,27 @@ optionButton: {
   paddingRight: 20,
   paddingLeft: 20,
   paddingVertical: 20,
+},
+
+// ACcount Modal
+
+centeredView: {
+  flex: 1,
+  justifyContent: "center",
+  alignItems: "center",
+  padding:20
+},
+modalView: {
+  margin: 10,
+  backgroundColor: "white",
+   borderRadius: 6,
+  padding: 10,
+  alignItems: "center",
+ },
+modalText: {
+  alignSelf:'flex-start',
+  padding:10,
+  fontWeight:'bold',
+  fontSize:18
 },
 });

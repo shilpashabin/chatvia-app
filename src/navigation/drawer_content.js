@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, Image, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import { DrawerContentScrollView, DrawerItem, } from '@react-navigation/drawer';
 import { Divider } from 'react-native-elements';
+import Modal from 'react-native-modal';
 
 import mainStyle from '../config/styles';
+import SnoozeData from '../screens/Snooze_Notification/snooze_data';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const DrawerContent = ({ navigation, ...props }) => {
+    const [snoozeModalVisible, setSnoozeModalVisible] = useState(false);
     const [angle, SetRotationangle] = useState('0deg');
 
     const DrawerView = () => {
@@ -42,7 +45,7 @@ const DrawerContent = ({ navigation, ...props }) => {
                                     color={color} />
                             )}
                             label="Status"
-                            onPress={() => null}
+                            onPress={() => navigation.navigate('Status')}
                         />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
                             icon={({ color, size }) => (
@@ -52,7 +55,7 @@ const DrawerContent = ({ navigation, ...props }) => {
                                     color={color} />
                             )}
                             label="Snooze notifications"
-                            onPress={() => null}
+                            onPress={() => setSnoozeModalVisible(true)}
                         />
                         <Divider />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
@@ -63,7 +66,7 @@ const DrawerContent = ({ navigation, ...props }) => {
                                     color={color} />
                             )}
                             label="Invites"
-                            onPress={() => null}
+                            onPress={() => navigation.navigate("Invites")}
                         />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
                             icon={({ color, size }) => (
@@ -73,7 +76,7 @@ const DrawerContent = ({ navigation, ...props }) => {
                                     color={color} />
                             )}
                             label="Archived"
-                            onPress={() => null}
+                            onPress={() => navigation.navigate("Archived")}
                         />
                         <Divider />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
@@ -152,7 +155,21 @@ const DrawerContent = ({ navigation, ...props }) => {
                         />
                     </View>}
 
-
+            {/* SNOOZEMODAL */}
+            <View>
+                <Modal
+                isVisible={snoozeModalVisible}
+                    style={{margin: 0}}
+                    backdropOpacity={0.3}
+                    onBackdropPress={() => setSnoozeModalVisible(false)}>
+                        <View style={styles.snoozeModal}>
+                            <Text style={{fontSize: 20}}>Snooze notifications</Text>
+                            <ScrollView showsVerticalScrollIndicator={false}>
+                                <SnoozeData />
+                            </ScrollView>
+                        </View>
+                </Modal>
+            </View>
 
             </DrawerContentScrollView>
         </View>
@@ -194,6 +211,28 @@ const styles = StyleSheet.create({
         bottom: 15,
         right: 15,
     },
+
+    // Snooze
+
+    snoozeModal: {
+        width: '90%',
+        borderRadius: 5,
+        backgroundColor: '#fff',
+        alignSelf: 'center',
+        padding: 20,
+        height:'70%'
+      },
+      hour: {
+        fontSize: 16,
+        color: 'grey',
+        marginTop: 20,
+      },
+      hourView: {
+        width: '100%',
+        backgroundColor: 'white',
+      },
 })
 
 export default DrawerContent;
+
+

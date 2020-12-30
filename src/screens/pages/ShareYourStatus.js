@@ -10,20 +10,8 @@ const Sharestatus = () => {
   
   return (
 
-    <View style={{backgroundColor:'white'}}>
-        <View style={styles.upperContainer}>
-            <View style={styles.headerContainer}>
-              <MaterialIcons name="arrow-back" size={25} color="#fff"/>
-            <View style={styles.innerContainer}>
-        <View style={styles.nameContainer}>
-              <Text style={styles.headerHeading} >Share Your Status</Text>
-            </View>
-            </View></View></View> 
-       
-
-      
-      
-      <View style={{backgroundColor:'white',width:'100%'}}>
+    <View style={{backgroundColor:'white', height:'100%'}}>
+       <View style={{backgroundColor:'white',width:'100%', marginTop:10}}>
             
             <SwitchTile text='Last seen' subText='show the last time were using ChatVia'/>
              <DividerTile/>

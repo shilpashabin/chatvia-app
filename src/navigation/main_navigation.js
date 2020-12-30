@@ -4,6 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import HomeScreenStack from './home_screen_stack_navigation';
 import SettingsScreenStack from './settings_stack_navigation';
+import Status from '../screens/Status/share_status';
+import Invites from '../screens/invites_screen/Invites';
+import Archived from '../screens/archived_screen/Archived';
 
 import DrawerContent from './drawer_content';
 
@@ -22,6 +25,11 @@ export default function MainNavigation() {
             >
                 <Drawer.Screen name="HomeStack" component={HomeScreenStack} />
                 <Drawer.Screen name="SettingsStack" component={SettingsScreenStack} />
+                <Drawer.Screen name="Status" component={Status} />
+                <Drawer.Screen name="Invites" component={Invites} />
+                <Drawer.Screen name="Archived" component={Archived} />
+
+
             </Drawer.Navigator>
         </NavigationContainer >
     );

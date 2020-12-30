@@ -10,16 +10,16 @@ import DividerTile from '../../components/divider'
 const IncomingCallscreen = () => {
   
   return (
-    <View style={{backgroundColor:'white'}}>
-        <View style={styles.upperContainer}>
+    <View style={{backgroundColor:'white', height:'100%'}}>
+        {/* <View style={styles.upperContainer}>
             <View style={styles.headerContainer}>
               <MaterialIcons name="arrow-back" size={25} color="#fff"/>
             <View style={styles.innerContainer}>
         <View style={styles.nameContainer}>
               <Text style={styles.headerHeading}>Incoming Calls</Text>
-            </View></View></View></View> 
+            </View></View></View></View>  */}
      
-      <View style={{backgroundColor:'white'}}>
+      <View style={{backgroundColor:'white', marginTop:10}}>
             
             <SwitchTile  text='Notification'/>
             <DividerTile/>

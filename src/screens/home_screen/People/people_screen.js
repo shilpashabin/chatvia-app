@@ -10,14 +10,16 @@ import PeopleBottomModal from './people_bottom_modal';
 import SwitchTile from '../../../components/switch_tile';
 
 const options = ['Help & Feedback'];
-const People = () => {
+const People = ({navigation}) => {
   const [optionmodalVisible, setOptionModal] = useState(false);
    
 
   return (
     <View style={{backgroundColor: 'white'}}>
       <View style={style.header}>
-          <MaterialIcons name="arrow-back" size={25} color="#fff" />
+          <TouchableOpacity onPress={()=> navigation.goBack(null)}>
+          <MaterialIcons name="arrow-back" size={23} color="#fff" />
+          </TouchableOpacity>
           <View style={style.titleBox}>
               <Text style={style.headerText}>People</Text>
               <TouchableOpacity onPress={() => setOptionModal(true)}>

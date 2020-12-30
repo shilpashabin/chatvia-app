@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView, TouchableWithoutFeedback , TouchableOpacity} from 'react-native';
 
 import mainStyle from '../../config/styles';
 import OptionCard from '../../components/option_card';
 import ContactTile from '../../components/contact';
-// import InputScrollView from 'react-native-input-scroll-view';
 import Ripple from 'react-native-material-ripple';
 import Modal from 'react-native-modal';
 
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-// import Fontisto from 'react-native-vector-icons/Fontisto';
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-// const options = ["People", "Options", "Create new group", "Add to Home screen", "Help & feedback"]
 
 
+const StatusBarHeight = StatusBar.currentHeight;
 const options = [ "Help & feedback"]
-const Archived = () => {
+const Archived = ({navigation}) => {
 
     const [optionButtonState, setOptionButtonState] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
@@ -34,14 +30,17 @@ const Archived = () => {
 
     return (
         <>
-            <StatusBar backgroundColor={mainStyle.colors.primary} />
+            <StatusBar backgroundColor="rgba(0,0,0,0.2)" translucent={true} />
 
             <TouchableWithoutFeedback onPress={() => setOptionButtonState(false)} touchSoundDisabled={true}>
-                <View>
+                <View style={{height:'100%', backgroundColor:'#fff'}}>
                     <View style={styles.upperContainer}>
                         {/* Header */}
                         <View style={styles.headerContainer}>
+                            <TouchableOpacity onPress={()=> navigation.goBack(null)}>
                             <MaterialIcons name="arrow-back" size={25} color="#fff" />
+                            </TouchableOpacity>
+
                             <View style={styles.innerContainer}>
                                 <View style={styles.nameContainer}>
                                     <Text style={styles.headerHeading}>Archived conversation</Text>
@@ -106,11 +105,11 @@ const styles = StyleSheet.create({
     headerContainer: {
         flexDirection: 'row',
         width: '100%',
-        height: 55,
+        height: 55 + StatusBarHeight,
         backgroundColor: mainStyle.colors.primary,
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingBottom: 5,
+        paddingTop: StatusBarHeight,
         paddingLeft: 15
     },
     headerHeading: {

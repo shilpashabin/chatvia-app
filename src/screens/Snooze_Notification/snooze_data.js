@@ -38,7 +38,7 @@ const hours = [
 ]
 
 const SnoozeData = () =>{
-    return hours.map((item) =>{
+    return hours.map((item, key) =>{
         return(
             <View>
                 

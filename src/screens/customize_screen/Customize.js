@@ -45,36 +45,12 @@ const Customize = () =>{
 
     return(
 
-<View>
-   <TouchableWithoutFeedback onPress={() => setOptionButtonState(false)} touchSoundDisabled={true}>
-        <View>
-         <View style={style.upperContainer}>
-            <View style={style.headerContainer}>
-            <MaterialIcons name="arrow-back" size={25} color="#fff" />
-                <View style={style.innerContainer}>
-                  <View style={style.nameContainer}>
-                    <Text style={style.headerHeading}>Customize invites</Text>
-                  </View>
-            <Ripple onPress={() => setOptionButtonState(true)}>
-              <SimpleLineIcons style={style.optionButton} name="options-vertical" size={16} color="#fff" />
-            </Ripple>
-                </View>
-    
-            {/* OptionCard */}
-                <View style={style.optionCardContainer}>
-                    {optionButtonState ? <View>
-                        <OptionCard
-                            data={options}
-                            selectedItem={(item) => console.log(item)} />
-                    </View> : <View></View>}
-                </View>
+<View style={{backgroundColor:'white', height:'100%'}}>
+   
 
-            </View>
-            </View>
-            </View>
-            </TouchableWithoutFeedback>
-
-           <SwitchTile text="Get notified about invitation"></SwitchTile>
+           <View style={{marginTop:10}}>
+           <SwitchTile text="Get notified about invitation" ></SwitchTile>
+           </View>
               <DividerTile/>
         <TouchableOpacity  style={style.openButton1} onPress={ () => profile()}>   
        <Text style={style.textStyle}>People who have your email</Text>

@@ -1,22 +1,51 @@
-import React, { Component } from 'react';
-import { Text,View,SafeAreaView,StyleSheet,Image} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import React, { useState } from 'react';
+import { Text,View,SafeAreaView,StyleSheet,Image, TouchableOpacity, StatusBar} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import mainStyle from '../../config/styles';
+import Modal from 'react-native-modal';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import OptionCard from '../../components/option_card';
 
-
-const HiddenScreen = () => {
-  
+const StatusBarHeight = StatusBar.currentHeight;
+const options = ['Help & Feedback'];
+const HiddenScreen = ({navigation}) => {
+  const [optionmodalVisible, setOptionModal] = useState(false);
   return (
-    <View style={{backgroundColor:'white'}}>
-        <View style={styles.upperContainer}>
-            <View style={styles.headerContainer}>
-              <MaterialIcons name="arrow-back" size={25} color="#fff"/>
-            <View style={styles.innerContainer}>
-        <View style={styles.nameContainer}>
-              <Text style={styles.headerHeading} >Hidden contacts</Text>
-            </View></View></View></View> 
-      <View style={styles.viewImage}> 
+    <View style={{backgroundColor:'white', height:'100%' }}>
+      <StatusBar backgroundColor="rgba(0,0,0,0.2)" translucent={true} />
+        <View style={styles.header}>
+          <TouchableOpacity onPress={()=> navigation.goBack(null)}>
+          <MaterialIcons name="arrow-back" size={23} color="#fff" />
+          </TouchableOpacity>
+          <View style={styles.titleBox}>
+              <Text style={styles.headerText}>Hidden contacts</Text>
+              <TouchableOpacity onPress={() => setOptionModal(true)}>
+                  <SimpleLineIcons name="options-vertical" size={16} color="#fff" />
+              </TouchableOpacity>
+              <Modal
+                isVisible={optionmodalVisible}
+                animationIn={'fadeIn'}
+                animationOut={'fadeOut'}
+                style={{margin: 1}}
+                backdropOpacity={0}
+                onBackdropPress={() => setOptionModal(false)}>
+                <View style={styles.optionModal}>
+                    <OptionCard
+                        data={options}
+                        selectedItem={(item) => console.log(item)}
+                    />
+                </View>
+              </Modal>
+          </View>
+      </View>
+      {/* <View style={styles.viewImage}> 
       <Image source={require('../../assets/sample/hidden.png')}  style = {styles.image}  resizeMode='contain'>
         </Image> 
+      </View> */}
+      <View style={{alignSelf:'center', justifyContent:'center', height:500}}>
+        <Text style={{fontSize:17}}>
+          No hidden contacts
+        </Text>
       </View>
       </View>
 
@@ -26,18 +55,43 @@ const HiddenScreen = () => {
 export default HiddenScreen;
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: mainStyle.colors.primary,
+    height: 55 + StatusBarHeight,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: StatusBarHeight,
+    paddingHorizontal: 10,
+  },
+  titleBox: {
+    width: '90%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 20,
+  },
+  headerText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center',
+  },
+  optionCardContainer: {
+    position: 'absolute',
+    top: 0,
+    right: -15,
+  },
+  optionModal: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+  },
       viewImage:{
-        flex:1,
-    
+        marginVertical:70,
+      height:100, 
     }, 
     image: {
       alignSelf: 'center',
-      marginVertical:70
-
-   
-      
-
-        
+      marginVertical:70,
+      height:100,   
       },
   headerContainer: {
     flexDirection: 'row',

@@ -1,11 +1,13 @@
 import React, {useState } from 'react';
-import { View, Text, StyleSheet,TouchableWithoutFeedback,Image } from 'react-native';
+import { View, Text, StyleSheet,TouchableWithoutFeedback,Image, StatusBar, TouchableOpacity} from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import OptionCard from '../../components/option_card';
+import mainStyle from '../../config/styles';
 
-const Invites = () =>
+const StatusBarHeight = StatusBar.currentHeight;
+const Invites = ({navigation}) =>
 {
     const [optionButtonState, setOptionButtonState] = useState(false);
     const options = [ "Help & feedback",]
@@ -13,13 +15,16 @@ const Invites = () =>
 
     return(
         <View>
+            <StatusBar backgroundColor="rgba(0,0,0,0.2)" translucent={true} />
             <View style={styles.container}>
             
             <TouchableWithoutFeedback onPress={() => setOptionButtonState(false)} touchSoundDisabled={true}>
             <View>
                         <View style={styles.upperContainer}>
             <View style={styles.headerContainer}>
+            <TouchableOpacity onPress={()=> navigation.goBack(null)}>
             <MaterialIcons name="arrow-back" size={25} color="#fff" />
+            </TouchableOpacity>
     
             <View style={styles.innerContainer}>
                                     <View style={styles.nameContainer}>
@@ -49,10 +54,13 @@ const Invites = () =>
                 
          
     </View>
-    <View style="styles.imgcontainer">
+    {/* <View style="styles.imgcontainer">
     <Image style={styles.inviteimg}
         source={require('../../assets/sample/invite.png')}/>
-        <Text style={styles.imgtext}>No invites</Text>
+        
+    </View> */}
+    <View style={{alignSelf:'center', justifyContent:'center', height:500}}>
+    <Text style={styles.imgtext}>No invites</Text>
     </View>
         </View>
     )
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
            backgroundColor:'grey'
     },
     optionText:{
-        color:'green',
+        color:mainStyle.colors.primary,
         fontSize:14,
         margin:15,
         fontWeight:'bold'
@@ -71,11 +79,10 @@ const styles = StyleSheet.create({
         headerContainer: {
             flexDirection: 'row',
             width: '100%',
-            height: 55,
-            backgroundColor: 'green',
+            height: 55 + StatusBarHeight,
+            backgroundColor: mainStyle.colors.primary,
             alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingBottom: 5,
+            paddingTop: StatusBarHeight,
             paddingLeft: 20
         },
         innerContainer: {
@@ -84,7 +91,7 @@ const styles = StyleSheet.create({
             justifyContent: 'space-between',
             alignSelf: 'center',
             marginHorizontal: 10,
-            width: '70%',
+            width: '85%',
             alignItems: 'center'
         },
         headerHeading: {
