@@ -55,7 +55,10 @@ const DrawerContent = ({ navigation, ...props }) => {
                                     color={color} />
                             )}
                             label="Snooze notifications"
-                            onPress={() => setSnoozeModalVisible(true)}
+                            onPress={() => {
+                                setSnoozeModalVisible(true);
+                                navigation.closeDrawer();
+                            }}
                         />
                         <Divider />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
@@ -155,21 +158,21 @@ const DrawerContent = ({ navigation, ...props }) => {
                         />
                     </View>}
 
-            {/* SNOOZEMODAL */}
-            <View>
-                <Modal
-                isVisible={snoozeModalVisible}
-                    style={{margin: 0}}
-                    backdropOpacity={0.3}
-                    onBackdropPress={() => setSnoozeModalVisible(false)}>
+                {/* SNOOZEMODAL */}
+                <View>
+                    <Modal
+                        isVisible={snoozeModalVisible}
+                        style={{ margin: 0 }}
+                        backdropOpacity={0.3}
+                        onBackdropPress={() => setSnoozeModalVisible(false)}>
                         <View style={styles.snoozeModal}>
-                            <Text style={{fontSize: 20}}>Snooze notifications</Text>
+                            <Text style={{ fontSize: 20 }}>Snooze notifications</Text>
                             <ScrollView showsVerticalScrollIndicator={false}>
                                 <SnoozeData />
                             </ScrollView>
                         </View>
-                </Modal>
-            </View>
+                    </Modal>
+                </View>
 
             </DrawerContentScrollView>
         </View>
@@ -220,17 +223,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignSelf: 'center',
         padding: 20,
-        height:'70%'
-      },
-      hour: {
+        height: '70%'
+    },
+    hour: {
         fontSize: 16,
         color: 'grey',
         marginTop: 20,
-      },
-      hourView: {
+    },
+    hourView: {
         width: '100%',
         backgroundColor: 'white',
-      },
+    },
 })
 
 export default DrawerContent;

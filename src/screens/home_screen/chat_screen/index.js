@@ -82,7 +82,24 @@ const ChatScreen = ({ route, navigation }) => {
                 {optionButtonState ? <View>
                     <OptionCard
                         data={options}
-                        selectedItem={(item) => console.log(item)} />
+                        selectedItem={(item) => {
+                            console.log(item)
+                            switch (item) {
+                                case 'People':
+                                    navigation.navigate('People');
+                                    setOptionButtonState(false);
+                                    break;
+                                case 'Options':
+                                    navigation.navigate('Options');
+                                    setOptionButtonState(false);
+                                    break;
+                                case 'Create new group':
+                                    navigation.navigate('Newgroup');
+                                    setOptionButtonState(false);
+                                    break;
+                            }
+                        }}
+                    />
                 </View> : <View></View>}
             </View>
 
