@@ -9,6 +9,22 @@ import NewConversation from '../screens/home_screen/new_conversation';
 import ChatScreen from '../screens/home_screen/chat_screen/index';
 import WelcomePage from '../screens/Welcome/welcome';
 
+const PeopleScreen = () => {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>People</Text>
+        </View>
+    )
+}
+
+const OptionScreen = () => {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Options</Text>
+        </View>
+    )
+}
+
 const Stack = createStackNavigator();
 
 const HomeScreenStack = () => {
@@ -21,6 +37,8 @@ const HomeScreenStack = () => {
             <Stack.Screen name="ChatVia" component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="New conversation" component={NewConversation} />
             <Stack.Screen name="Chat Screen" component={ChatScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="PeopleScreen" component={PeopleScreen} />
+            <Stack.Screen name="OptionScreen" component={OptionScreen} />
         </Stack.Navigator>
     );
 }
