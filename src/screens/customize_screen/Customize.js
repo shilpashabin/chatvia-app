@@ -20,6 +20,10 @@ const Customize = () =>{
     const [peoplemodalVisible, setPeopleModalVisible] = useState(false);
     const [profilemodalVisible, setProfileModalVisible] = useState(false);
     const [blockModalVisible, setBlockModalVisible] = useState(false);
+    function people() {
+      setPeopleModalVisible(false);
+      setPeopleModalVisible(true);
+  };
     function profile() {
         setPeopleModalVisible(false);
         setProfileModalVisible(true);
@@ -40,6 +44,12 @@ const Customize = () =>{
         {label: 'Can send you an invite',},
       
     ];
+
+    const Data2 = [
+      {label: 'Can contact you directly',},
+      {label: 'Can send you an invite',},
+    
+  ];
     
    
 
@@ -76,7 +86,7 @@ const Customize = () =>{
 
            <SwitchTile text="Get notified about invitation"></SwitchTile>
               <DividerTile/>
-        <TouchableOpacity  style={style.openButton1} onPress={ () => profile()}>   
+        <TouchableOpacity  style={style.openButton1} onPress={ () => people()}>   
        <Text style={style.textStyle}>People who have your email</Text>
         <Text style={style.textStyle1}>Can send you an invite</Text>
       </TouchableOpacity>
@@ -94,7 +104,39 @@ const Customize = () =>{
       </TouchableOpacity>
       <DividerTile/>
 
-        {/* ProfileModale */}
+      {/* emailModale */}
+      <View>
+                <Modal
+                isVisible={peoplemodalVisible}
+                backdropOpacity={0.3}
+                style={{margin:10}}
+                animationIn={'fadeIn'}
+                animationOut={'fadeOutDown'}
+                onBackdropPress={()=> setPeopleModalVisible(false)}>
+                    <View style={style.blockModal}>
+                        <Text style={{fontSize:19, fontWeight:'bold',paddingLeft:10}}>People who have your email</Text>
+                        
+            <RadioButtonRN data={Data2} selectedBtn={(e) => console.log(e)} box={false} 
+           textStyle={{fontSize:18,padding:8,paddingLeft:10,}}
+           boxStyle={{flexDirection:'row',marginTop:10}}
+           circleSize={10}  activeColor={mainStyle.colors.primary} />
+                        <View style={style.cancelView}>
+                            <TouchableWithoutFeedback onPress={()=> setPeopleModalVisible(false)}>
+                            <Text style={{color:mainStyle.colors.primary,paddingLeft:20,fontWeight:'bold'}}>CANCEL</Text>
+                            </TouchableWithoutFeedback>
+                            
+                        </View>
+                    </View>
+
+                </Modal>
+            </View>
+
+
+
+
+
+
+        {/* PhoneModale */}
 
         <View>
         <Modal
@@ -105,7 +147,7 @@ const Customize = () =>{
                 animationOut={'fadeOutDown'}
                 onBackdropPress={()=> setProfileModalVisible(false)}>
                     <View style={style.blockModal}>
-                        <Text style={{fontSize:20, fontWeight:'bold',paddingLeft:10}}>Everyone else</Text>
+                        <Text style={{fontSize:19, fontWeight:'bold',paddingLeft:10}}>People who have your phone number</Text>
                         
             <RadioButtonRN data={Data} selectedBtn={(e) => console.log(e)} box={false} 
            textStyle={{fontSize:18,padding:8,paddingLeft:10,}}
@@ -123,7 +165,7 @@ const Customize = () =>{
             </View>
 
 
-         {/* BlockModal */}
+         {/* everyoneModal */}
 
          <View>
                 <Modal
@@ -134,7 +176,7 @@ const Customize = () =>{
                 animationOut={'fadeOutDown'}
                 onBackdropPress={()=> setBlockModalVisible(false)}>
                     <View style={style.blockModal}>
-                        <Text style={{fontSize:20, fontWeight:'bold',paddingLeft:10}}>Everyone else</Text>
+                        <Text style={{fontSize:19, fontWeight:'bold',paddingLeft:10}}>Everyone else</Text>
                         
             <RadioButtonRN data={Data1} selectedBtn={(e) => console.log(e)} box={false} 
            textStyle={{fontSize:18,padding:8,paddingLeft:10,}}
