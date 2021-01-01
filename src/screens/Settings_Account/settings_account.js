@@ -47,7 +47,7 @@ const SettingsAccount = ({navigation}) =>{
                         <DividerTile/>
                         <TextTile headText="Sign out" />
                         <SectionHead heading="Improve ChatVia" />
-                        <SwitchTile text="Improve Hangouts" subText="Report additional diagnostics to help improve ChatVia"/>
+                        <SwitchTile text="Improve ChatVia" subText="Report additional diagnostics to help improve ChatVia"/>
                     </View>
                 </View>
             </ScrollView>

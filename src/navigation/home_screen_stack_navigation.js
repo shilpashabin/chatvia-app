@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import mainStyle from '../config/styles';
 
 import HomeScreen from '../screens/home_screen/index';
+import SkipHomeScreen from '../screens/home_screen/skip_chatscreen';
 import NewConversation from '../screens/home_screen/new_conversation';
 import ChatScreen from '../screens/home_screen/chat_screen/index';
 import WelcomePage from '../screens/Welcome/welcome';
@@ -35,6 +36,7 @@ const HomeScreenStack = () => {
         }} initialRouteName ={WelcomePage}>
             <Stack.Screen name="WelcomePage" component={WelcomePage} options={{ headerShown: false }} />
             <Stack.Screen name="ChatVia" component={HomeScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="SkipChatVia" component={SkipHomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="New conversation" component={NewConversation} />
             <Stack.Screen name="Chat Screen" component={ChatScreen} options={{ headerShown: false }} />
             <Stack.Screen name="PeopleScreen" component={PeopleScreen} />

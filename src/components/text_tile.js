@@ -19,20 +19,20 @@ export default TextTile;
 const style = StyleSheet.create({
   headText: {
     color: '#464647',
-    fontSize: 18,
+    
     paddingLeft: 10,
   },
   subText: {
-    fontSize: 15,
+    
     color: 'grey',
     paddingLeft: 10,
   },
   section: {
     width: '100%',
-    height: 60,
+    height: 40,
     backgroundColor: 'white',
     paddingLeft: 5,
     marginTop:5,
-    paddingBottom:10
+    paddingBottom:5
   },
 });

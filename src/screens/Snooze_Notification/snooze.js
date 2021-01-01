@@ -9,20 +9,6 @@ const Snooze = () => {
   const [snoozeModalVisible, setSnoozeModalVisible] = useState(false);
   return (
     <View>
-      <TouchableOpacity onPress={()=>setSnoozeModalVisible(true)}>
-        <View
-          style={{
-            backgroundColor: 'red',
-            width: 100,
-            height: 50,
-            alignSelf: 'center',
-            justifyContent: 'center',
-            marginVertical: 100,
-            borderRadius: 8,
-          }}>
-          <Text style={{alignSelf: 'center'}}>Modal</Text>
-        </View>
-      </TouchableOpacity>
       <Modal
         isVisible={snoozeModalVisible}
         style={{margin: 0}}

@@ -9,26 +9,26 @@ const Status = ({navigation}) => {
         <View style={{height : '100%', width : '100%', backgroundColor :'#455a64', alignItems:'center'}}>
             <View style={style.headView}>
                 <Text style={style.head}>Share your status</Text>
-                <Text style={{color:'#e8eae6', fontSize:17}}>Sahre plans, iedas or your mood </Text>
+                <Text style={{color:'#e8eae6', }}>Share plans, iedas or your mood </Text>
             </View>
 
             <View style={style.inputView}>
                 <View style={style.profilepic}></View>
                 <View style={style.input}>
                     <TextInput
-                    placeholder="shhare your status"
+                    placeholder="share your status"
                     placeholderTextColor="#e8eae6"
                     style={{height:50, borderBottomColor:'cyan', borderBottomWidth:2, width:'100%', paddingTop:10}}></TextInput>
                     <Text style={{alignSelf:'flex-end', color:'#e8eae6'}}>0/140</Text>
                 </View>
             </View>
             <View style={{ alignSelf:'flex-start',  marginLeft:30, marginTop:20}}>
-                <Text style={{alignSelf:'flex-start', color:'#e8eae6', fontSize:17}}>Your status will be visible to everyone that you use ChatVia with.</Text>
+                <Text style={{alignSelf:'flex-start', color:'#e8eae6', }}>Your status will be visible to everyone that you use ChatVia with.</Text>
             </View>
             <View style={style.footer}>
                 <Ripple style={style.button} onPress={()=>navigation.goBack(null)}>
                     <View>
-                        <Text>CALNCEL</Text>
+                        <Text>CANCEL</Text>
                     </View>
 
                 </Ripple>
@@ -49,7 +49,7 @@ export default Status;
 
 const style = StyleSheet.create({
     head:{
-        fontSize : 22,
+        fontSize : 20,
         fontWeight : 'bold',
         color : '#fff'
     },
@@ -61,7 +61,6 @@ const style = StyleSheet.create({
     inputView:{
         width:'100%',
         height:70,
-        // backgroundColor:'pink',
         flexDirection:'row',
         marginTop:10
     },

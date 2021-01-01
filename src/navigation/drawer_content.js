@@ -165,7 +165,7 @@ const DrawerContent = ({ navigation, ...props }) => {
                     backdropOpacity={0.3}
                     onBackdropPress={() => setSnoozeModalVisible(false)}>
                         <View style={styles.snoozeModal}>
-                            <Text style={{fontSize: 20}}>Snooze notifications</Text>
+                            <Text style={{fontSize: 18}}>Snooze notifications</Text>
                             <ScrollView showsVerticalScrollIndicator={false}>
                                 <SnoozeData />
                             </ScrollView>
@@ -248,12 +248,12 @@ const styles = StyleSheet.create({
     // Snooze
 
     snoozeModal: {
-        width: '90%',
+        width: '88%',
         borderRadius: 5,
         backgroundColor: '#fff',
         alignSelf: 'center',
         padding: 20,
-        height:'70%'
+        height:'65%'
       },
       hour: {
         fontSize: 16,

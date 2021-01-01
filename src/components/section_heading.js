@@ -17,8 +17,9 @@ export default SectionHead;
 const style = StyleSheet.create({
   heading:{
       color: mainStyle.colors.primary,
-      fontSize:20,
-      padding:10
+      fontSize:16,
+      padding:10,
+      fontWeight:'600'
   },
   section:{
     width: '100%',

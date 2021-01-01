@@ -26,7 +26,7 @@ const SwitchTile = ({text, subText}) =>{
                       thumbColor={isEnabled ? mainStyle.colors.primary : '#ececec'}
                       onValueChange={toggleSwitch}
                       value={isEnabled}
-                      style={{marginRight:10}}
+                      style={{marginRight:20}}
                   />
               </View>
             </View>
@@ -38,7 +38,7 @@ export default SwitchTile;
 
 const style = StyleSheet.create({
   text: {
-    fontSize: 18,
+    
     color: '#464647',
     paddingLeft:10
   },

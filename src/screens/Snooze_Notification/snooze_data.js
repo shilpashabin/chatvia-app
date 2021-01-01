@@ -57,9 +57,9 @@ export default SnoozeData;
 
 const style= StyleSheet.create({
     hour:{
-        fontSize:18,
+        fontSize:16,
         color:'grey',
-        marginTop:20
+        marginTop:15
     },
     hourView:{
         width:'100%',

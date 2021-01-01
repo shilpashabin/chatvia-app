@@ -24,7 +24,7 @@ const SettingsScreenStack = () => {
             <Stack.Screen name="Settings" component={Settings} options={{headerShown:false}}/>
             <Stack.Screen name="SettingsAccount" component={SettingsAccount} options={{headerShown:false}}/>
             <Stack.Screen name="Sharestatus" component={Sharestatus} options={{headerShown:true, title:"Share your status"}}/>
-            <Stack.Screen name="MessageScreen" component={MessageScreen} options={{headerShown:true, title:"Messages"}}/>
+            <Stack.Screen name="MessageScreen" component={MessageScreen} options={{headerShown:true, title:"Messages", }}/>
             <Stack.Screen name="IncomingCallscreen" component={IncomingCallscreen} options={{headerShown:true, title:"Incoming calls"}}/>
             <Stack.Screen name="Customize" component={Customize} options={{headerShown:true, title:"Customise invitations"}}/>
             <Stack.Screen name="DiscoverabilityScreen" component={DiscoverabilityScreen} options={{headerShown:false}}/>

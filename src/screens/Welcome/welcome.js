@@ -1,10 +1,48 @@
-import React from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, Text, Image, TextInput, Platform, StyleSheet, StatusBar, PermissionsAndroid, } from 'react-native';
 import mainStyle from '../../config/styles';
 import Ripple from 'react-native-material-ripple';
+import Contacts from 'react-native-contacts';
+
+
 
 const StatusBarHeight = StatusBar.currentHeight;
 const WelcomePage = ({navigation}) =>{
+    
+    // let [contacts, setContacts] = useState([]);
+
+    // useEffect(() => {
+    //     if (Platform.OS === 'android') {
+    //       PermissionsAndroid.request(
+    //         PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
+    //           title: 'Contacts',
+    //           message: 'This app would like to view your contacts.',
+    //         }).then(() => {
+    //           loadContacts();
+    //         }
+    //       );
+    //     } else {
+    //       loadContacts();
+    //     }
+    //   }, []);
+
+    //   const loadContacts = () => {
+    //     Contacts.getAll((err, contacts) => {
+    //       contacts.sort(
+    //         (a, b) => 
+    //           a.givenName.toLowerCase() > b.givenName.toLowerCase(),
+    //       );
+    //       console.log('contacts -> ', contacts);
+    //       if (err === 'denied') {
+    //         alert('Permission to access contacts was denied');
+    //         console.warn('Permission to access contacts was denied');
+    //       } else {
+    //         setContacts(contacts);
+    //         console.log('contacts', contacts);
+    //       }
+    //     });
+    //   }; 
+    
     
     return(
         <View style={{height:'100%', width:'100%', alignItems:'center',paddingTop: StatusBarHeight, backgroundColor:'#fff'}}>
@@ -19,7 +57,7 @@ const WelcomePage = ({navigation}) =>{
             </View>
 
             <View style={style.footer}>
-                <Ripple style={style.button} >
+                <Ripple style={style.button} onPress={()=>{navigation.navigate("SkipChatVia")}}>
                     <View>
                         <Text>SKIP</Text>
                     </View>
