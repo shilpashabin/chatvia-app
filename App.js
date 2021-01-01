@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity, TouchableHighlight, Pressable } from 'react-native';
+import React, { useEffect } from 'react';
+import SplashScreen from 'react-native-splash-screen';
 
 import MainNavigation from './src/navigation/main_navigation';
-import Options from './src/screens/chatoption_screen/Options'
 
 const App = () => {
+  useEffect(() => SplashScreen.hide());
   return (
     < MainNavigation />
   );
@@ -12,3 +12,5 @@ const App = () => {
 
 
 export default App;
+
+
