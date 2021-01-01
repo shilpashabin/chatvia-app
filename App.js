@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity, TouchableHighlight, Pressable } from 'react-native';
+import React, { useEffect } from 'react';
+import SplashScreen from 'react-native-splash-screen';
 
 import MainNavigation from './src/navigation/main_navigation';
 
 const App = () => {
+  useEffect(() => SplashScreen.hide());
   return (
     < MainNavigation />
   );
@@ -11,3 +12,5 @@ const App = () => {
 
 
 export default App;
+
+

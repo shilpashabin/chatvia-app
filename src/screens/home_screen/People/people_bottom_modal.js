@@ -51,7 +51,7 @@ const PeopleBottomModal = () =>{
                             <View>
                                 <View style={{flexDirection: 'row', marginTop: 5}}>
                                     <Text style={{padding: 5, fontSize: 20, marginBottom: 20}}>
-                                        Aiswarya{' '}
+                                        William{' '}
                                     </Text>
                                 </View>
 
@@ -75,9 +75,9 @@ const PeopleBottomModal = () =>{
                                             color="rgba(0,0,0,0.5)"
                                         />
                                         <Text style={style.text}>Share Meet video call link</Text>
-                                        <View style={style.new}>
-                                            <Text style={{color: mainStyle.colors.primary}}>NEW</Text>
-                                        </View>
+                                        
+                                            <Text style={style.newItemText}>NEW</Text>
+                                       
                                     </View>
                                 </TouchableOpacity>
 
@@ -158,7 +158,7 @@ const PeopleBottomModal = () =>{
                         {/* ProfileFields */}
 
                         <Text style={{alignSelf: 'center', padding: 35}}>
-                            Aiswarya
+                            William
                         </Text>
 
                         <DividerTile />
@@ -168,7 +168,7 @@ const PeopleBottomModal = () =>{
                                 <AntDesign
                                     name="mail"
                                     size={23}
-                                    color="blue"
+                                    color={mainStyle.colors.primary}
                                     style={{alignSelf: 'center'}}
                                 />
                             </View>
@@ -177,7 +177,7 @@ const PeopleBottomModal = () =>{
                                 <MaterialCommunityIcons
                                     name="calendar"
                                     size={23}
-                                    color="blue"
+                                    color={mainStyle.colors.primary}
                                     style={{alignSelf: 'center'}}
                                 />
                             </View>
@@ -219,7 +219,7 @@ const PeopleBottomModal = () =>{
                 animationOut={'fadeOutDown'}
                 onBackdropPress={()=> setBlockModalVisible(false)}>
                     <View style={style.blockModal}>
-                        <Text style={{fontSize:18, fontWeight:'bold', paddingBottom:10}}>Block Aiswarya ?</Text>
+                        <Text style={{fontSize:18, fontWeight:'bold', paddingBottom:10}}>Block William ?</Text>
                         <Text style={style.blockText}>
                            If blocked, you will no longer recieve direct messages and notifications, but this person will still be present in any group ChatVia that you have in common.
                         </Text>
@@ -329,6 +329,17 @@ const style = StyleSheet.create({
             justifyContent:'space-around', 
             width:'40%',
             paddingVertical:20
-      }
+      },
+      newItemText: {
+        fontSize: 16,
+        borderWidth: 2,
+        borderRadius: 4,
+        borderColor: mainStyle.colors.primary,
+        paddingHorizontal: 4,
+        paddingLeft: 6,
+        marginLeft: 10,
+        color: mainStyle.colors.primary,
+        fontWeight: 'bold'
+    },
 
 });

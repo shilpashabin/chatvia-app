@@ -57,7 +57,10 @@ const DrawerContent = ({ navigation, ...props }) => {
                                     color={color} />
                             )}
                             label="Snooze notifications"
-                            onPress={() => setSnoozeModalVisible(true)}
+                            onPress={() => {
+                                setSnoozeModalVisible(true);
+                                navigation.closeDrawer();
+                            }}
                         />
                         <Divider />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
@@ -143,7 +146,8 @@ const DrawerContent = ({ navigation, ...props }) => {
                                     color={color} />
                             )}
                             label="Add account"
-                            onPress={() => setModalVisible(true)}
+                            onPress={() => {setModalVisible(true);
+                                navigation.closeDrawer();}}
                         />
                         <DrawerItem style={styles.drawerItemStyle} {...props}
                             icon={({ color, size }) => (
@@ -157,21 +161,21 @@ const DrawerContent = ({ navigation, ...props }) => {
                         />
                     </View>}
 
-            {/* SNOOZEMODAL */}
-            <View>
-                <Modal
-                isVisible={snoozeModalVisible}
-                    style={{margin: 0}}
-                    backdropOpacity={0.3}
-                    onBackdropPress={() => setSnoozeModalVisible(false)}>
+                {/* SNOOZEMODAL */}
+                <View>
+                    <Modal
+                        isVisible={snoozeModalVisible}
+                        style={{ margin: 0 }}
+                        backdropOpacity={0.3}
+                        onBackdropPress={() => setSnoozeModalVisible(false)}>
                         <View style={styles.snoozeModal}>
                             <Text style={{fontSize: 18}}>Snooze notifications</Text>
                             <ScrollView showsVerticalScrollIndicator={false}>
                                 <SnoozeData />
                             </ScrollView>
                         </View>
-                </Modal>
-            </View>
+                    </Modal>
+                </View>
 
 
              {/* ADD ACCOUNT MODAL */}
@@ -259,8 +263,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'grey',
         marginTop: 20,
-      },
-      hourView: {
+    },
+    hourView: {
         width: '100%',
         backgroundColor: 'white',
       },

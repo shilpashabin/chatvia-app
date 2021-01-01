@@ -106,14 +106,16 @@ const style= StyleSheet.create({
         elevation:10
     },
     imageView:{
-        height:500,
+        height:'80%',
         width:'100%',
-       
-        justifyContent:'center'
+       backgroundColor:'pink',
+        justifyContent:'center',
+        position:'absolute',
+        bottom:10
 
     },
     image:{
-        height:450,
+        height:'100%',
         width:'100%',
         alignSelf:'center',
         

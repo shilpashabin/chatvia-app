@@ -19,11 +19,11 @@ export default TextTile;
 const style = StyleSheet.create({
   headText: {
     color: '#464647',
-    
+    fontSize:16,
     paddingLeft: 10,
   },
   subText: {
-    
+    fontSize:12,
     color: 'grey',
     paddingLeft: 10,
   },
@@ -33,6 +33,6 @@ const style = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 5,
     marginTop:5,
-    paddingBottom:5
+    marginBottom:15
   },
 });

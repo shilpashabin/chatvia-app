@@ -38,7 +38,7 @@ export default SwitchTile;
 
 const style = StyleSheet.create({
   text: {
-    
+    fontSize:16,
     color: '#464647',
     paddingLeft:10
   },
@@ -47,13 +47,13 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 50,
+    height: 45,
     backgroundColor: 'white',
     paddingLeft: 5,
-    paddingBottom:10
+    marginBottom:20
   },
   subText: {
-    fontSize: 14,
+    fontSize: 12,
     color: 'grey',
     paddingLeft:10
   },

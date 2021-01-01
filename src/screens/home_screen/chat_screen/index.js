@@ -86,16 +86,21 @@ const ChatScreen = ({ route, navigation }) => {
                             console.log(item)
                             switch (item) {
                                 case 'People':
-                                    navigation.navigate('PeopleScreen');
+                                    navigation.navigate('People');
                                     setOptionButtonState(false);
                                     break;
                                 case 'Options':
-                                    navigation.navigate('OptionScreen');
+                                    navigation.navigate('Options');
+                                    setOptionButtonState(false);
+                                    break;
+                                case 'Create new group':
+                                    navigation.navigate('Newgroup');
                                     setOptionButtonState(false);
                                     break;
                             }
-                        }} />
-                </View> : null}
+                        }}
+                    />
+                </View> : <View></View>}
             </View>
 
             {/* VideoCall Modal */}

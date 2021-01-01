@@ -65,7 +65,8 @@ const style = StyleSheet.create({
         alignItems: 'center',
         paddingTop: StatusBarHeight,
         paddingHorizontal:10,
-        elevation:5
+        elevation:8,
+        paddingBottom:5
       },
       titleBox: {
         width: '90%',

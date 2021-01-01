@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import mainStyle from '../../../config/styles';
 import Modal from 'react-native-modal';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -10,42 +10,43 @@ import PeopleBottomModal from './people_bottom_modal';
 import SwitchTile from '../../../components/switch_tile';
 
 const options = ['Help & Feedback'];
-const People = ({navigation}) => {
+const People = ({ navigation }) => {
   const [optionmodalVisible, setOptionModal] = useState(false);
-   
+
 
   return (
-    <View style={{backgroundColor: 'white'}}>
+    <View style={{ backgroundColor: 'white' }}>
+      <StatusBar translucent={false} />
       <View style={style.header}>
-          <TouchableOpacity onPress={()=> navigation.goBack(null)}>
+        <TouchableOpacity onPress={() => navigation.goBack(null)}>
           <MaterialIcons name="arrow-back" size={23} color="#fff" />
+        </TouchableOpacity>
+        <View style={style.titleBox}>
+          <Text style={style.headerText}>People</Text>
+          <TouchableOpacity onPress={() => setOptionModal(true)}>
+            <SimpleLineIcons name="options-vertical" size={16} color="#fff" />
           </TouchableOpacity>
-          <View style={style.titleBox}>
-              <Text style={style.headerText}>People</Text>
-              <TouchableOpacity onPress={() => setOptionModal(true)}>
-                  <SimpleLineIcons name="options-vertical" size={16} color="#fff" />
-              </TouchableOpacity>
-              <Modal
-                isVisible={optionmodalVisible}
-                animationIn={'fadeIn'}
-                animationOut={'fadeOut'}
-                style={{margin: 1}}
-                backdropOpacity={0}
-                onBackdropPress={() => setOptionModal(false)}>
-                <View style={style.optionModal}>
-                    <OptionCard
-                        data={options}
-                        selectedItem={(item) => console.log(item)}
-                    />
-                </View>
-              </Modal>
-          </View>
+          <Modal
+            isVisible={optionmodalVisible}
+            animationIn={'fadeIn'}
+            animationOut={'fadeOut'}
+            style={{ margin: 1 }}
+            backdropOpacity={0}
+            onBackdropPress={() => setOptionModal(false)}>
+            <View style={style.optionModal}>
+              <OptionCard
+                data={options}
+                selectedItem={(item) => console.log(item)}
+              />
+            </View>
+          </Modal>
+        </View>
       </View>
-      <View style={{marginTop: 10, width: '100%', height: 50}}>
-            <Text style={style.sub}>Create Group with Aiswarya</Text>
+      <View style={{ marginTop: 10, width: '100%', height: 50 }}>
+        <Text style={style.sub}>Create Group with Aiswarya</Text>
       </View>
       <DividerTile />
-     <PeopleBottomModal/>
+      <PeopleBottomModal />
     </View>
   );
 };
@@ -86,5 +87,5 @@ const style = StyleSheet.create({
     top: 0,
     right: 0,
   },
-   
+
 });

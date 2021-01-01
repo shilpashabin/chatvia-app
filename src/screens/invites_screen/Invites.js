@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   optionCardContainer: {
     position: 'absolute',
-    top: 25,
+    top: 30,
     right: 5,
   },
   inviteimg: {

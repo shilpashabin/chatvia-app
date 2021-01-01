@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Pressable, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TextInput, StatusBar, FlatList } from 'react-native';
 
 import { Divider } from 'react-native-elements';
 import Modal from 'react-native-modal';
@@ -16,6 +16,7 @@ const USERS = new UserData();
 const Frequent_Users = USERS.FrequentUsers;
 const ChatVia_Users = USERS.ChatViaUser;
 const UnRegistered_Users = USERS.UnRegisteredUsers;
+const StatusBarHeight = StatusBar.currentHeight;
 
 const Newgroup = () => {
     const [optionButtonState, setOptionButtonState] = useState(false);
@@ -47,10 +48,10 @@ const Newgroup = () => {
         />
     );
 
-
+    
     return (
         <>
-
+<StatusBar backgroundColor="rgba(0,0,0,0.2)" translucent={true} />
 <View style={styles.headerContainer}>
                             <MaterialIcons name="arrow-back" size={25} color="#fff" />
                             <View style={styles.innerContainer}>
@@ -90,7 +91,6 @@ const Newgroup = () => {
                     />
                 </View>
                 <Divider />
-
                 {/* Search Box */}
                 <View style={styles.searchBox}>
                     <MaterialIcons name="search" size={20} color="rgba(0,0,0,0.5)" />
@@ -224,10 +224,10 @@ const styles = StyleSheet.create({
       headerContainer: {
         flexDirection: 'row',
         width: '100%',
-        height: 55,
+        height: 55 + StatusBarHeight,
         backgroundColor: '#425863',
         alignItems: 'center',
-        paddingBottom: 5,
+        paddingTop: StatusBarHeight,
         paddingLeft: 15,
         position:'absolute',
     },
